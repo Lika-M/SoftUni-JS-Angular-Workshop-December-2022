@@ -7,12 +7,14 @@ import {CoreModule} from './core/core.module';
 import { PostListComponent } from './post-list/post-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ThemeListComponent } from './theme-list/theme-list.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponent,
     ThemeListComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
