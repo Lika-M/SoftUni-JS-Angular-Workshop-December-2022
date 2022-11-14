@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { IPost } from '../interfaces/post';
 
 @Component({
   selector: 'app-post-list',
@@ -8,12 +9,17 @@ import { DataService } from '../data.service';
 })
 export class PostListComponent implements OnInit {
 
+  posts: IPost[] | null=null;
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.loadPosts(5).subscribe((value) => {
-      console.log(value)
+    this.dataService.loadPosts(5).subscribe({
+      next: (value) => {
+        this.posts = value;
+      },
+      error: (err) => console.error(err)
     })
-    
+
   }
 }
