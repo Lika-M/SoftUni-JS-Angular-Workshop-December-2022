@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { ITheme } from '../interfaces/theme';
 
 @Component({
   selector: 'app-theme-list',
@@ -8,11 +9,16 @@ import { DataService } from '../data.service';
 })
 export class ThemeListComponent implements OnInit {
 
+  themes: ITheme[] | null = null;
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.loadThemes().subscribe((value) => {
-      console.log(value)
+    this.dataService.loadThemes().subscribe({
+      next: (value) => {
+        this.themes = value;
+      },
+      error: (err) => console.error(err)
     })
   }
 
