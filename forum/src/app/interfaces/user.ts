@@ -1,12 +1,12 @@
-export interface IUser {
-    _id: number;
+import { IBase } from "./base";
+import { IPost } from "./post";
+import { ITheme } from "./theme";
+
+export interface IUser extends IBase {
     tel: string;
     email: string;
     username: string;
     password: string;
-    themes: string [];
-    posts: string[];
-    created_at: string;
-    updatedAt: string;
-    __v: number
+    themes: ITheme[];
+    posts: IPost[];
 }

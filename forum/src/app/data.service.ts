@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { environment } from '../environments/environment';
 import { ITheme } from './interfaces/theme';
 import { IPost } from './interfaces/post';
+import { Observable } from 'rxjs';
 
 const dataURL = environment.dataURL;
 
@@ -11,13 +12,17 @@ const dataURL = environment.dataURL;
 })
 export class DataService {
 
-  constructor(private HttpClient: HttpClient)  { } 
+  constructor(private HttpClient: HttpClient) { }
 
-  loadThemes () {
-    return this.HttpClient.get<ITheme[]>(`${dataURL}/themes`);
+  loadThemes(): Observable<ITheme[]> {
+    return this.HttpClient.get<ITheme[]>(
+      `${dataURL}/themes`
+    );
   }
 
-  loadPosts (limit?: number) {
-    return this.HttpClient.get<IPost[]>(`${dataURL}/posts${limit ? `?limit=${limit}` : ''}`)
+  loadPosts(limit?: number): Observable<IPost[]> {
+    return this.HttpClient.get<IPost[]>(
+      `${dataURL}/posts${limit ? `?limit=${limit}` : ''}`
+    );
   }
 }

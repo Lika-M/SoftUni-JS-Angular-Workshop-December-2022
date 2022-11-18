@@ -9,7 +9,7 @@ import { IPost } from '../interfaces/post';
 })
 export class PostListComponent implements OnInit {
 
-  posts: IPost[] | null=null;
+  posts: IPost[] = [];
 
   constructor(private dataService: DataService) { }
 
