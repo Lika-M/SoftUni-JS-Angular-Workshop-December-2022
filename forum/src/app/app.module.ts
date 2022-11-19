@@ -4,13 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {CoreModule} from './core/core.module';
+import { CoreModule } from './core/core.module';
 import { PostListComponent } from './post-list/post-list.component';
 import { ThemeListComponent } from './theme-list/theme-list.component';
 import { MainComponent } from './main/main.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { RouterModule } from '@angular/router';
     ThemeListComponent,
     MainComponent,
     PostListComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     CoreModule,
     HttpClientModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

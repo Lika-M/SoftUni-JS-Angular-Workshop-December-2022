@@ -13,6 +13,10 @@ export class UserService {
     this.isLogged = true;
   }
 
+  register(): void {
+    this.isLogged = true;
+  }
+
   logout(): void {
     this.isLogged = false;
   }

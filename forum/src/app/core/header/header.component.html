@@ -6,10 +6,10 @@
         <div *ngIf="!isLogged" class="mini-navbar">
             <ul>
                 <li>
-                    <a routerLink="javascript:void(0)">Login</a>
+                    <a routerLink="/login">Login</a>
                 </li>
                 <li>
-                    <a routerLink="#">Register</a>
+                    <a routerLink="/register">Register</a>
                 </li>
             </ul>
         </div>
@@ -19,7 +19,7 @@
                     <a routerLink="#">Peter's profile</a>
                 </li>
                 <li>
-                    <a routerLink="javascript:void(0)">Logout</a>
+                    <a (click)="logoutHandler()">Logout</a>
                 </li>
             </ul>
         </div>
