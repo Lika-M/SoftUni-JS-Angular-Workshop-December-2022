@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { ThemeListItemComponent } from './theme-list-item/theme-list-item.component';
+import { ThemeDetailsComponent } from './theme-details/theme-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ThemeListItemComponent } from './theme-list-item/theme-list-item.compon
     MainComponent,
     PostListComponent,
     HomeComponent,
-    ThemeListItemComponent
+    ThemeListItemComponent,
+    ThemeDetailsComponent
   ],
   imports: [
     BrowserModule,

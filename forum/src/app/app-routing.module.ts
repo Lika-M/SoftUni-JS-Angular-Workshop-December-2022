@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
+import { ThemeDetailsComponent } from './theme-details/theme-details.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,10 @@ const routes: Routes = [
     path: 'themes',
     component: MainComponent
   },
- 
+  {
+    path: 'themes/:themeId',
+    component: ThemeDetailsComponent
+  }
  
 ];
 
