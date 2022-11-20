@@ -12,7 +12,9 @@
                     </div>
                 </div>
                 <div class="subscribers">
-                    <button *ngIf="isLogged" class="subscribe">Subscribe</button>
+                    <button *ngIf="isLogged" [class.subscribe]="canSubscribe" [class.unsubscribe]="!canSubscribe">
+                       {{canSubscribe ? 'Subscribe' : 'Unsubscribe'}}
+                    </button>
                     <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
                 </div>
             </div>
