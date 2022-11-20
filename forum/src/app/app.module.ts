@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
+import { ThemeListItemComponent } from './theme-list-item/theme-list-item.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthModule } from './auth/auth.module';
     ThemeListComponent,
     MainComponent,
     PostListComponent,
-    HomeComponent
+    HomeComponent,
+    ThemeListItemComponent
   ],
   imports: [
     BrowserModule,
