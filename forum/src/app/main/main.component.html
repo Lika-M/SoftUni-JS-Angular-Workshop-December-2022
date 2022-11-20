@@ -1,8 +1,12 @@
 <div class="container">
     <main>
+        <div class="container">
+            <app-home *ngIf="!isLogged"></app-home>
+        </div>
         <div class="theme-title">
             <app-theme-list></app-theme-list>
         </div>
     </main>
+
     <app-post-list></app-post-list>
 </div>
