@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 
-import { LoginComponent } from './auth/login/login.component';
-import { ProfileComponent } from './auth/profile/profile.component';
 import { CreateThemeComponent } from './create-theme/create-theme.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ThemeDetailsComponent } from './theme-details/theme-details.component';
 
 const routes: Routes = [
@@ -28,8 +28,13 @@ const routes: Routes = [
   },
   {
     path: 'create/theme',
+    canActivate: [AuthGuard],
     component: CreateThemeComponent
-  }
+  },
+  // {
+  //   path: '**',
+  //   component: PageNotFoundComponent
+  // }
 ];
 
 @NgModule({

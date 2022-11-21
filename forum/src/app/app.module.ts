@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import { ThemeListItemComponent } from './theme-list-item/theme-list-item.component';
 import { ThemeDetailsComponent } from './theme-details/theme-details.component';
 import { CreateThemeComponent } from './create-theme/create-theme.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateThemeComponent } from './create-theme/create-theme.component';
     HomeComponent,
     ThemeListItemComponent,
     ThemeDetailsComponent,
-    CreateThemeComponent
+    CreateThemeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
