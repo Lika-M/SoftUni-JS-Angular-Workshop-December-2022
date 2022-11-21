@@ -21,7 +21,9 @@ export class DataService {
   }
 
   loadThemeById(id: number): Observable<ITheme> {
-    return this.HttpClient.get<ITheme>(`${dataURL}/themes/${id}`)
+    return this.HttpClient.get<ITheme>(
+      `${dataURL}/themes/${id}`
+    );
   }
 
   loadPosts(limit?: number): Observable<IPost[]> {

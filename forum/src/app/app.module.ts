@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { ThemeListItemComponent } from './theme-list-item/theme-list-item.component';
 import { ThemeDetailsComponent } from './theme-details/theme-details.component';
+import { CreateThemeComponent } from './create-theme/create-theme.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ThemeDetailsComponent } from './theme-details/theme-details.component';
     PostListComponent,
     HomeComponent,
     ThemeListItemComponent,
-    ThemeDetailsComponent
+    ThemeDetailsComponent,
+    CreateThemeComponent
   ],
   imports: [
     BrowserModule,

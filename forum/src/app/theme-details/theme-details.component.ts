@@ -28,11 +28,11 @@ export class ThemeDetailsComponent implements OnInit {
         this.theme = theme;
         this.canSubscribe = !this.theme.subscribers.includes('5fa64b162183ce1728ff371d');
       }
-    })
+    });
   }
 
   canLike(post: IPost) {
-    return !post.likes.includes('5fa64b162183ce1728ff371d')
+    return !post.likes.includes('5fa64b162183ce1728ff371d');
   }
 
 }
