@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { ITheme } from '../interfaces/theme';
+import { DataService } from '../../data.service';
+import { ITheme } from '../../interfaces/theme';
 
 @Component({
   selector: 'app-theme-list',

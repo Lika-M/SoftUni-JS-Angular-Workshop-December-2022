@@ -4,6 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthRoutingModule } from './auth-routing.module';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -11,7 +12,8 @@ import { AuthRoutingModule } from './auth-routing.module';
   declarations: [
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,

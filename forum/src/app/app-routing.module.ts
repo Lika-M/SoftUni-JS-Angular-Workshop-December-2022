@@ -5,8 +5,8 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { CreateThemeComponent } from './create-theme/create-theme.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ThemeDetailsComponent } from './theme-details/theme-details.component';
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { ThemeDetailsComponent } from './theme/theme-details/theme-details.component';
 
 const routes: Routes = [
   {
@@ -18,23 +18,16 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
+
   {
-    path: 'themes',
-    component: MainComponent
+    path: 'not-found',
+    component: PageNotFoundComponent
   },
   {
-    path: 'themes/:themeId',
-    component: ThemeDetailsComponent
-  },
-  {
-    path: 'create/theme',
-    canActivate: [AuthGuard],
-    component: CreateThemeComponent
-  },
-  // {
-  //   path: '**',
-  //   component: PageNotFoundComponent
-  // }
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'not-found'
+  }
 ];
 
 @NgModule({

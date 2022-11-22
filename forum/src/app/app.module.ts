@@ -6,38 +6,35 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { PostListComponent } from './post-list/post-list.component';
-import { ThemeListComponent } from './theme-list/theme-list.component';
-import { MainComponent } from './main/main.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
-import { ThemeListItemComponent } from './theme-list-item/theme-list-item.component';
-import { ThemeDetailsComponent } from './theme-details/theme-details.component';
 import { CreateThemeComponent } from './create-theme/create-theme.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ThemeModule } from './theme/theme.module';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponent,
-    ThemeListComponent,
     MainComponent,
-    PostListComponent,
     HomeComponent,
-    ThemeListItemComponent,
-    ThemeDetailsComponent,
     CreateThemeComponent,
-    PageNotFoundComponent
   ],
+
+  // The order of registration is important! ---> 
+  // --> AuthModule before AppRoutingModule
   imports: [
-    BrowserModule,
+    AuthModule,
+    ThemeModule,
     AppRoutingModule,
+    BrowserModule,
     CoreModule,
     HttpClientModule,
     SharedModule,
     RouterModule,
-    AuthModule
+    ThemeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

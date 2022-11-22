@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { ITheme } from '../interfaces/theme';
-import { UserService } from '../user.service';
+import { ITheme } from '../../interfaces/theme';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-theme-list-item',

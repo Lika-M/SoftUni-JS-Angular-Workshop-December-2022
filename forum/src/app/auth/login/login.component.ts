@@ -7,17 +7,30 @@ import { UserService } from 'src/app/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {
+    this.userService.user = {
+      _id: '',
+      tel: '',
+      email: '',
+      username: 'John',
+      password: '',
+      themes: [],
+      posts: [],
+      created_at: '',
+      updatedAt: '',
+      __v: 0
+    }
 
-  ngOnInit(): void {
+    this.router.navigate(['/']);
+
   }
 
   loginHandler(): void {
     //TODO: fetch
     this.userService.login();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
 }

@@ -3,26 +3,30 @@
         <div class="logo-wrap">
             <p class="logo"><span class="logo">SoftUni Forum</span></p>
         </div>
-        <div *ngIf="!isLogged" class="mini-navbar">
-            <ul>
-                <li>
-                    <a routerLink="/login">Login</a>
-                </li>
-                <li>
-                    <a routerLink="/register">Register</a>
-                </li>
-            </ul>
+        <div class="mini-navbar">
+            <ng-template [ngIf]="!isLogged">
+                <ul>
+                    <li>
+                        <a routerLink="/login">Login</a>
+                    </li>
+                    <li>
+                        <a routerLink="/register">Register</a>
+                    </li>
+                </ul>
+            </ng-template>
+            <ng-template [ngIf]="isLogged">
+                <ul>
+                    <li>
+                        <a routerLink="/user/profile">{{user?.username}}'s profile</a>
+                    </li>
+                    <li>
+                        <a routerLink="/logout">Logout</a>
+                    </li>
+                </ul>
+            </ng-template>
         </div>
-        <div *ngIf="isLogged" class="mini-navbar">
-            <ul>
-                <li>
-                    <a routerLink="/user/profile">Peter's profile</a>
-                </li>
-                <li>
-                    <a (click)="logoutHandler()">Logout</a>
-                </li>
-            </ul>
-        </div>
+
+
     </div>
     <nav>
         <ul>

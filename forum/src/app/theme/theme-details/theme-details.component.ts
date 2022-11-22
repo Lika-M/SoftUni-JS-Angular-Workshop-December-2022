@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from '../data.service';
-import { IPost } from '../interfaces/post';
-import { ITheme } from '../interfaces/theme';
-import { UserService } from '../user.service';
+import { DataService } from '../../data.service';
+import { IPost } from '../../interfaces/post';
+import { ITheme } from '../../interfaces/theme';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-theme-details',

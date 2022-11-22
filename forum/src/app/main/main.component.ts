@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { UserService } from '../user.service';
 
 @Component({
@@ -6,14 +6,19 @@ import { UserService } from '../user.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
 
-  isLogged: boolean = this.userService.isLogged;
-  
+// use DoCheck to check if props are changed
+
+export class MainComponent implements DoCheck {
+
+  // get isLogged() {
+  //   return this.userService.isLogged;
+  // }
+  isLogged: boolean = false;
+
   constructor(private userService: UserService) { }
 
-
-  ngOnInit(): void {
+  ngDoCheck(): void {
+    this.isLogged = this.userService.isLogged
   }
-
 }
