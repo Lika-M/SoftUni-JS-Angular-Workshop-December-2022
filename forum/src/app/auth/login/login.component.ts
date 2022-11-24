@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
 
 @Component({
@@ -9,28 +9,16 @@ import { UserService } from 'src/app/user.service';
 })
 export class LoginComponent {
 
-  constructor(private userService: UserService, private router: Router) {
-    this.userService.user = {
-      _id: '',
-      tel: '',
-      email: '',
-      username: 'John',
-      password: '',
-      themes: [],
-      posts: [],
-      created_at: '',
-      updatedAt: '',
-      __v: 0
-    }
-
-    this.router.navigate(['/']);
-
-  }
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) { }
 
   loginHandler(): void {
     //TODO: fetch
-    this.userService.login();
-    this.router.navigate(['/']);
+    this.userService.user = {
+      username: 'John',
+    } as any;
+
+    const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl' || '/']
+    this.router.navigate([returnUrl]);
   }
 
 }
