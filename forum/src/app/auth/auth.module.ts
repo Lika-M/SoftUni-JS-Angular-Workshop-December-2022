@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
+
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -17,7 +19,8 @@ import { LogoutComponent } from './logout/logout.component';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }
