@@ -10,7 +10,6 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
-import { CreateThemeComponent } from './create-theme/create-theme.component';
 import { ThemeModule } from './theme/theme.module';
 import { MainComponent } from './main/main.component';
 
@@ -20,7 +19,6 @@ import { MainComponent } from './main/main.component';
     PostListComponent,
     MainComponent,
     HomeComponent,
-    CreateThemeComponent,
   ],
 
   // The order of registration is important! ---> 
@@ -34,7 +32,6 @@ import { MainComponent } from './main/main.component';
     HttpClientModule,
     SharedModule,
     RouterModule,
-    ThemeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

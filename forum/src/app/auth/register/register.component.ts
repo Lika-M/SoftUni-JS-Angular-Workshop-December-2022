@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CreateUserDto } from 'src/app/interfaces/createUserDto';
 import { UserService } from 'src/app/user.service';
 import { emailValidator, passMatch } from '../util';
 
@@ -41,14 +42,27 @@ export class RegisterComponent {
 
   onRegister(): void {
     //TODO: fetch
-    console.log(this.registerFormGroup.value)
-    this.userService.register();
-    this.router.navigate(['/home'])
+    // console.log(this.registerFormGroup.value);
+    const { username, email, passwords, tel, telRegion } = this.registerFormGroup.value;
+
+    const body: CreateUserDto = {
+      username,
+      email,
+      password: passwords.password,
+      // ...(tel && { tel: telRegion + tel })
+    }
+
+    if (tel && telRegion) {
+      body['tel'] = telRegion + tel
+    }
+    // console.log(body)
+      this.userService.register$(body).subscribe(() => {
+        this.router.navigate(['/home']);
+      });
   }
 
-  // showErrors(controlName: string, group: FormGroup = this.registerFormGroup) {
-
-  //   return group.controls['controlName'].touched && group.controls['controlName'].invalid
-  // }
+  showErrors(controlName: string, group: FormGroup = this.registerFormGroup) {
+    return group.controls[controlName].touched && group.controls[controlName].invalid
+  }
 
 }

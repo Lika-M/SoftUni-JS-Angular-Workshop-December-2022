@@ -12,23 +12,29 @@ const dataURL = environment.dataURL;
 })
 export class DataService {
 
-  constructor(private HttpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   loadThemes(): Observable<ITheme[]> {
-    return this.HttpClient.get<ITheme[]>(
+    return this.http.get<ITheme[]>(
       `${dataURL}/themes`
     );
   }
 
   loadThemeById(id: number): Observable<ITheme> {
-    return this.HttpClient.get<ITheme>(
-      `${dataURL}/themes/${id}`
-    );
+    return this.http.get<ITheme>(`${dataURL}/themes/${id}`);
   }
 
   loadPosts(limit?: number): Observable<IPost[]> {
-    return this.HttpClient.get<IPost[]>(
+    return this.http.get<IPost[]>(
       `${dataURL}/posts${limit ? `?limit=${limit}` : ''}`
+    );
+  }
+
+  addNewTheme(body: { themeName: string, postText: string }): Observable<ITheme> {
+    return this.http.post<ITheme>(
+      `${dataURL}/themes`,
+      body,
+      { withCredentials: true }
     );
   }
 }

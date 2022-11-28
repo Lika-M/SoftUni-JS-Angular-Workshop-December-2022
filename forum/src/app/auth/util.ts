@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors } from "@angular/forms";
+import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export function emailValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
@@ -16,8 +16,9 @@ export function emailValidator(control: AbstractControl): ValidationErrors | nul
     return null;
 }
 
+// with closure
 export function passMatch(passFormControl: AbstractControl) {
-    return (repassFormControl: AbstractControl) => {
+   const validatorFn:ValidatorFn =(repassFormControl: AbstractControl) => {
         if (passFormControl.value !== repassFormControl.value) {
             return {
                 // error name
@@ -26,6 +27,7 @@ export function passMatch(passFormControl: AbstractControl) {
         }
         return null;
     }
+    return validatorFn;
 }
 
 // Second option, with parent -> group

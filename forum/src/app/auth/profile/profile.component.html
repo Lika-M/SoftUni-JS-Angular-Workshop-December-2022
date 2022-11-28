@@ -1,19 +1,25 @@
-
 <div class="container">
     <div class="profile"><img src="/assets/profile.png" alt="default user">
         <h3>User Info:</h3>
-        <div class="flex">
-            <p>Username: </p>
-            <p>Peter</p>
-        </div>
-        <div class="flex">
-            <p>Email: </p>
-            <p>peter.johnson@gmail.com</p>
-        </div>
-        <div class="flex">
-            <p>Phone: </p>
-            <p>+359 885 888 888</p>
-        </div>
-        <button class="edit-button">Edit</button>
+
+        <ng-container *ngIf="!isInEditMode">
+            <div class="flex">
+                <p>Username: </p>
+                <p>Peter</p>
+            </div>
+            <div class="flex">
+                <p>Email: </p>
+                <p>peter.johnson@gmail.com</p>
+            </div>
+            <div class="flex">
+                <p>Phone: </p>
+                <p>+359 885 888 888</p>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isInEditMode">
+            <div>edit mode</div>
+        </ng-container>
+
+        <button (click)="isInEditMode = true" class="edit-button">Edit</button>
     </div>
 </div>

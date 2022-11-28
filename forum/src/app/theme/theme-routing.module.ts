@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "../core/guards/auth.guard";
-import { CreateThemeComponent } from "../create-theme/create-theme.component";
 import { MainComponent } from "../main/main.component";
+import { CreateThemeComponent } from "./create-theme/create-theme.component";
 import { ThemeDetailsComponent } from "./theme-details/theme-details.component";
 
 const routes: Routes = [
@@ -15,7 +15,8 @@ const routes: Routes = [
       },
       {
         path: 'create/theme',
-        canActivate: [AuthGuard],
+        //TODO uncomment auth guard
+        // canActivate: [AuthGuard],
         component: CreateThemeComponent
       },
     ]

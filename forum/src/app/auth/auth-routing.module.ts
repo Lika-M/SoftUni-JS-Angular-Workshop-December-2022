@@ -16,12 +16,13 @@ const routes: Routes = [
       },
       {
         path: 'logout',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         component: LogoutComponent
       },
       {
         path: 'user/profile',
-        canActivate: [AuthGuard],
+        //TODO uncomment
+        // canActivate: [AuthGuard],
         component: ProfileComponent
       }
 ]

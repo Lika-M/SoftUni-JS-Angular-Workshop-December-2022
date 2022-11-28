@@ -5,6 +5,8 @@ import { ThemeListItemComponent } from './theme-list-item/theme-list-item.compon
 import { ThemeDetailsComponent } from './theme-details/theme-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeRoutingModule } from './theme-routing.module';
+import { FormsModule } from '@angular/forms';
+import { CreateThemeComponent } from './create-theme/create-theme.component';
 
 
 
@@ -13,17 +15,20 @@ import { ThemeRoutingModule } from './theme-routing.module';
     ThemeListComponent,
     ThemeListItemComponent,
     ThemeDetailsComponent,
+    CreateThemeComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    ThemeRoutingModule
+    ThemeRoutingModule,
+    FormsModule
     
   ],
   exports: [
     ThemeListComponent,
     ThemeListItemComponent,
     ThemeDetailsComponent,
+    CreateThemeComponent
   ]
 })
 export class ThemeModule { }

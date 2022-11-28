@@ -1,5 +1,5 @@
 <div class="container">
-  <form (ngSubmit)="onRegister" [formGroup]="registerFormGroup"  class="register">
+  <form (ngSubmit)="onRegister()" [formGroup]="registerFormGroup"  class="register">
 
     <fieldset>
       <h2>Registration Form</h2>
@@ -8,12 +8,12 @@
       <p class="field field-icon">
         <label for="username"><span><i class="fas fa-user"></i></span></label>
         <input formControlName="username"
-          [class.input-error]="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid"
+          [class.input-error]="showErrors('username')"
           type="text" name="username" id="username" placeholder="Johny">
       </p>
       <!-- errors -->
       <ng-container
-        *ngIf="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid">
+        *ngIf="showErrors('username')">
         <p *ngIf="registerFormGroup.controls['username'].errors?.['required']" class="error">
           Username is required!
         </p>
@@ -55,12 +55,12 @@
         <p class="field field-icon">
           <label for="password"><span><i class="fas fa-lock"></i></span></label>
           <input
-            [class.input-error]="passwordsGroup.controls['password'].touched && passwordsGroup.controls['password'].invalid"
+            [class.input-error]="showErrors('password', passwordsGroup)"
             formControlName="password" type="password" name="password" id="password" placeholder="******">
         </p>
         <!-- errors -->
         <ng-container
-          *ngIf="passwordsGroup.controls['password'].touched && passwordsGroup.controls['password'].invalid">
+          *ngIf="showErrors('password', passwordsGroup)">
           <p *ngIf="passwordsGroup.controls['password'].errors?.['required']" class="error">
             Password is required!
           </p>
