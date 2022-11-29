@@ -27,7 +27,7 @@ export class UserService {
       { withCredentials: true }) //set cookie
       .pipe(
         tap(loginUser => this.currentUser = loginUser),
-       
+
       )
   }
 
@@ -39,6 +39,18 @@ export class UserService {
     )
   }
 
+  logout(): void {
 
+  }
+
+  getProfile$():Observable<IUser>{
+    return this.http.get<IUser>(`${environment.dataURL}/users/profile`, {withCredentials: true}).pipe(
+      tap(user => this.currentUser = user)
+    );
+  }
+
+  updateProfile$():Observable<IUser>{
+    return this.http.post<IUser>(`${environment.dataURL}/users/profile`, {withCredentials: true})
+  }
 
 }

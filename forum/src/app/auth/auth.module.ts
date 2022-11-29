@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms'
+import {ReactiveFormsModule, FormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
 
 import { RegisterComponent } from './register/register.component';
@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LogoutComponent } from './logout/logout.component';
+import { EmailValidatorDirective } from './email-validator.directive';
 
 
 
@@ -15,11 +16,13 @@ import { LogoutComponent } from './logout/logout.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    LogoutComponent
+    LogoutComponent,
+    EmailValidatorDirective
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
+    FormsModule,
     ReactiveFormsModule
   ]
 })
