@@ -42,6 +42,9 @@ export class RegisterComponent {
 
   onRegister(): void {
     //TODO: fetch
+    if (this.registerFormGroup.invalid) {
+      return;
+    }
     // console.log(this.registerFormGroup.value);
     const { username, email, passwords, tel, telRegion } = this.registerFormGroup.value;
 
@@ -49,16 +52,19 @@ export class RegisterComponent {
       username,
       email,
       password: passwords.password,
-      // ...(tel && { tel: telRegion + tel })
+      rePassword: passwords.rePassword,
+      ...(tel && { tel: telRegion + tel })
     }
 
     if (tel && telRegion) {
       body['tel'] = telRegion + tel
     }
     // console.log(body)
-      this.userService.register$(body).subscribe(() => {
-        this.router.navigate(['/home']);
-      });
+    this.userService.register$(body).subscribe(user => {
+      this.userService.currentUser = user;
+      this.router.navigate(['/themes']);
+    });
+
   }
 
   showErrors(controlName: string, group: FormGroup = this.registerFormGroup) {

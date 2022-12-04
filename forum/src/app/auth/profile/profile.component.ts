@@ -14,13 +14,13 @@ export class ProfileComponent implements OnInit {
   @ViewChild('editProfileForm') editProfileForm!: NgForm;
 
   isInEditMode: boolean = false;
-  currentUser!: IUser;
+  currentUser: IUser | null= null;
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getProfile$().subscribe({
-      next: (user) => { this.currentUser = user },
+      next: (user) => { this.currentUser = user; console.log(user) },
       error: (err) => { this.router.navigate(['/user/login']) }
     })
   }
@@ -29,20 +29,20 @@ export class ProfileComponent implements OnInit {
     this.isInEditMode = true;
     setTimeout(() => {
       this.editProfileForm.setValue({
-        email: this.currentUser.email,
-        username: this.currentUser.username,
-        //TODO continue
-        'select-tel': this.currentUser.tel && this.currentUser.tel.length > 4
+        email: this.currentUser?.email,
+        username: this.currentUser?.username,
+        //TODO 
+        'select-tel': this.currentUser?.tel && this.currentUser.tel.length > 4
         ? this.currentUser.tel.substring(0, 4) : '',
-        tel: this.currentUser.tel && this.currentUser.tel.length > 4
-        ? this.currentUser.tel.substring(4) : this.currentUser.tel
+        tel: this.currentUser?.tel && this.currentUser.tel.length > 4
+        ? this.currentUser.tel?.substring(4) : this.currentUser?.tel
       })
     })
   }
 
   updateProfile():void {
     //TODO continue
-    console.log(this.editProfileForm.value);
+    // console.log(this.editProfileForm.value);
     // this.userService.updateProfile$
     // this.isInEditMode = false;
   }

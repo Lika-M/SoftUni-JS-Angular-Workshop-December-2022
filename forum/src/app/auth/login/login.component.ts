@@ -29,13 +29,13 @@ export class LoginComponent {
     this.errorMessage = '';
     const { email, password } = this.loginFormGroup.value
     this.userService.login$({ email, password }).subscribe({
-      next: (user) => { 
-        console.log(user)
-        this.router.navigate(['/home']) 
+      next: (user) => {
+        this.userService.currentUser = user;
+        this.router.navigate(['/themes'])
       },
-      // complete: () => {},
+      complete: () => { },
       error: (err) => {
-        console.log(err.error.message)
+        // console.log(err.error.message)
         this.errorMessage = err.error.message
       }
     });

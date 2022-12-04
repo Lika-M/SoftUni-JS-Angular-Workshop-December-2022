@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 
 @Component({
@@ -6,13 +6,14 @@ import { UserService } from '../user.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements DoCheck {
 
-  isLogged:boolean = this.userService.isLogged;
+  isLogged: boolean = false;
 
   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
+  ngDoCheck(): void {
+    this.isLogged = this.userService.isLogged;
   }
 
 }

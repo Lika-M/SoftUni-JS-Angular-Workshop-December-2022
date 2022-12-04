@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { ThemeModule } from './theme/theme.module';
 import { MainComponent } from './main/main.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { AuthComponent } from './auth.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { MainComponent } from './main/main.component';
     PostListComponent,
     MainComponent,
     HomeComponent,
+    AuthComponent
   ],
 
   // The order of registration is important! ---> 
@@ -33,7 +36,15 @@ import { MainComponent } from './main/main.component';
     SharedModule,
     RouterModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi:true,
+      useClass: AuthInterceptor
+    }
+  ],
+  bootstrap: [AppComponent],
+  exports:
+[  AuthComponent]
 })
 export class AppModule { }

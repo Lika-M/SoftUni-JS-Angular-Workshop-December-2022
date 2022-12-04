@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LogoutComponent } from './logout/logout.component';
 import { EmailValidatorDirective } from './email-validator.directive';
+import { AuthComponent } from '../auth.component';
 
 
 
@@ -17,7 +18,7 @@ import { EmailValidatorDirective } from './email-validator.directive';
     LoginComponent,
     ProfileComponent,
     LogoutComponent,
-    EmailValidatorDirective
+    EmailValidatorDirective,
   ],
   imports: [
     CommonModule,

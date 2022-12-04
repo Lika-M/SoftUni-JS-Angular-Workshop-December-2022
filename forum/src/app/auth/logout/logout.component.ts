@@ -10,8 +10,17 @@ import { UserService } from 'src/app/user.service';
 export class LogoutComponent{
 
   constructor(private userService: UserService, private router: Router) {
-    this.userService.currentUser = null;
-    this.router.navigate(['/']);
+  
+    this.userService.logout$().subscribe({
+      next: () => {
+        this.userService.currentUser = null;
+        this.router.navigate(['/']);
+      },
+      error: () => {
+        this.userService.currentUser = null;
+        this.router.navigate(['/login']);
+      }
+    });
 
   }
 
