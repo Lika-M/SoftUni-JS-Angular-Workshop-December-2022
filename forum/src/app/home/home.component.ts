@@ -1,4 +1,5 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { UserService } from '../user.service';
 
 @Component({
@@ -6,14 +7,20 @@ import { UserService } from '../user.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements DoCheck {
+export class HomeComponent implements OnInit, OnDestroy {
 
-  isLogged: boolean = false;
+  isLogged!: boolean;
+  private subscription!: Subscription;
 
   constructor(private userService: UserService) { }
 
-  ngDoCheck(): void {
-    this.isLogged = this.userService.isLogged;
+  ngOnInit(): void {
+    this.subscription = this.userService.isLogged$.subscribe(isLogged => {
+      this.isLogged = isLogged
+    })
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 
 }

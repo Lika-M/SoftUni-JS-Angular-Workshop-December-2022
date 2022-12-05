@@ -16,13 +16,6 @@ export class UserService {
   isLogged$= this.currentUser$.pipe(map(user => Boolean(user)));
 
 
-
-  get isLogged(): boolean {
-    return Boolean(this.currentUser$);
-  }
-
-
-
   constructor(private http: HttpClient) {}
 
   register$(userData: CreateUserDto): Observable<IUser> {

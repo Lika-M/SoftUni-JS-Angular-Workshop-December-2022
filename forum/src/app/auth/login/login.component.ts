@@ -32,7 +32,6 @@ export class LoginComponent {
     const { email, password } = this.loginFormGroup.value;
     this.userService.login$({ email, password }).subscribe({
       next: (user) => {
-        // this.userService.currentUser$.pipe(map( user => user = user)) ;
         this.router.navigate(['/themes'])
       },
       complete: () => { },

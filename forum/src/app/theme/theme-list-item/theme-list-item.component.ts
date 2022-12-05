@@ -9,7 +9,7 @@ import { UserService } from '../../user.service';
 })
 export class ThemeListItemComponent implements OnChanges {
 
-  isLogged$ =this.userService.isLogged$;
+  isLogged$ = this.userService.isLogged$;
   canSubscribe: boolean = false;
 
   @Input() theme!: ITheme;
@@ -17,6 +17,7 @@ export class ThemeListItemComponent implements OnChanges {
   constructor(private userService: UserService) { }
 
   ngOnChanges(): void {
+    //TODO use currentUser$
     this.canSubscribe = !this.theme.subscribers.includes('5fa64b162183ce1728ff371d');
   }
 
