@@ -13,7 +13,6 @@ import { AuthModule } from './auth/auth.module';
 import { ThemeModule } from './theme/theme.module';
 import { MainComponent } from './main/main.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { AuthComponent } from './auth.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import { AuthComponent } from './auth.component';
     PostListComponent,
     MainComponent,
     HomeComponent,
-    AuthComponent
+
   ],
 
   // The order of registration is important! ---> 
@@ -39,12 +38,10 @@ import { AuthComponent } from './auth.component';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      multi:true,
+      multi: true,
       useClass: AuthInterceptor
     }
   ],
   bootstrap: [AppComponent],
-  exports:
-[  AuthComponent]
 })
 export class AppModule { }

@@ -20,6 +20,6 @@ export class AuthInterceptor implements HttpInterceptor {
     if(request.url.startsWith('/api')){
       request = request.clone({url: request.url.replace('/api', dataURL), withCredentials:true})
     }
-    return next.handle(request);
+    return  next.handle(request);
   }
 }

@@ -61,7 +61,7 @@ export class RegisterComponent {
     }
     // console.log(body)
     this.userService.register$(body).subscribe(user => {
-      this.userService.currentUser = user;
+      // this.userService.currentUser = user;
       this.router.navigate(['/themes']);
     });
 

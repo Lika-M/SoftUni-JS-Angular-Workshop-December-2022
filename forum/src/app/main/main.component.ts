@@ -7,18 +7,12 @@ import { UserService } from '../user.service';
   styleUrls: ['./main.component.scss']
 })
 
-// use DoCheck to check if props are changed
 
-export class MainComponent implements DoCheck {
+export class MainComponent {
 
-  // get isLogged() {
-  //   return this.userService.isLogged;
-  // }
-  isLogged: boolean = false;
+  isLogged$ = this.userService.isLogged$
 
   constructor(private userService: UserService) { }
 
-  ngDoCheck(): void {
-    this.isLogged = this.userService.isLogged
-  }
+ 
 }

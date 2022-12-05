@@ -9,7 +9,7 @@ import { UserService } from '../../user.service';
 })
 export class ThemeListItemComponent implements OnChanges {
 
-  isLogged: boolean = this.userService.isLogged;
+  isLogged$ =this.userService.isLogged$;
   canSubscribe: boolean = false;
 
   @Input() theme!: ITheme;

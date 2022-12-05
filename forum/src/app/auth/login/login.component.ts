@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
 import { emailValidator } from '../util';
+import {map} from 'rxjs/operators';
 
 
 @Component({
@@ -27,10 +28,11 @@ export class LoginComponent {
 
   onLogin(): void {
     this.errorMessage = '';
-    const { email, password } = this.loginFormGroup.value
+
+    const { email, password } = this.loginFormGroup.value;
     this.userService.login$({ email, password }).subscribe({
       next: (user) => {
-        this.userService.currentUser = user;
+        // this.userService.currentUser$.pipe(map( user => user = user)) ;
         this.router.navigate(['/themes'])
       },
       complete: () => { },

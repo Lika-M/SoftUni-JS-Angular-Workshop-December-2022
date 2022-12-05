@@ -1,7 +1,7 @@
 <div class="container">
     <main>
-        <div *ngIf="!isLogged" class="container">
-            <app-home *ngIf="!isLogged"></app-home>
+        <div *ngIf="!(isLogged$ | async)" class="container">
+            <app-home *ngIf="!(isLogged$ | async)"></app-home>
         </div>
         <div class="theme-title">
             <app-theme-list></app-theme-list>

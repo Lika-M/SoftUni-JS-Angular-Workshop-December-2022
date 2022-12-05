@@ -8,22 +8,40 @@ import { RegisterComponent } from "./register/register.component";
 const routes: Routes = [
     {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        // canActivate: [AuthGuard],
+        // data:{
+        //   title: 'Register',
+        //   loginRequired: false
+        // }
       },
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        // canActivate: [AuthGuard],
+        // data:{
+        //   title: 'Login',
+        //   loginRequired: false
+        // }
       },
       {
         path: 'logout',
+        component: LogoutComponent,
         // canActivate: [AuthGuard],
-        component: LogoutComponent
+        // data:{
+        //   title: 'Logout',
+        //   loginRequired: true
+        // }
       },
       {
         path: 'user/profile',
         //TODO uncomment
+        component: ProfileComponent,
         // canActivate: [AuthGuard],
-        component: ProfileComponent
+        // data:{
+        //   title: 'Profile',
+        //   loginRequired: false
+        // }
       }
 ]
 

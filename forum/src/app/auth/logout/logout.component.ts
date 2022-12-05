@@ -13,11 +13,11 @@ export class LogoutComponent{
   
     this.userService.logout$().subscribe({
       next: () => {
-        this.userService.currentUser = null;
+        // this.userService.currentUser = null;
         this.router.navigate(['/']);
       },
       error: () => {
-        this.userService.currentUser = null;
+        // this.userService.currentUser = null;
         this.router.navigate(['/login']);
       }
     });

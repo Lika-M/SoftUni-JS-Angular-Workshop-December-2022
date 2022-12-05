@@ -4,7 +4,7 @@
             <p class="logo"><span class="logo">SoftUni Forum</span></p>
         </div>
         <div class="mini-navbar">
-            <ng-template [ngIf]="!isLogged">
+            <ng-template [ngIf]="!(isLogged$ |async)">
                 <ul>
                     <li>
                         <a routerLink="/login">Login</a>
@@ -14,10 +14,10 @@
                     </li>
                 </ul>
             </ng-template>
-            <ng-template [ngIf]="isLogged">
+            <ng-template [ngIf]="(isLogged$ |async)">
                 <ul>
                     <li>
-                        <a routerLink="/user/profile">{{user?.username}}'s profile</a>
+                        <a routerLink="/user/profile">{{(user$ | async)?.username}}'s profile</a>
                     </li>
                     <li>
                         <a routerLink="/logout">Logout</a>

@@ -14,7 +14,7 @@ export class ThemeDetailsComponent implements OnInit {
 
   theme!: ITheme;
 
-  isLogged: boolean = this.userService.isLogged
+  isLogged$ = this.userService.isLogged$;
   canSubscribe: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,

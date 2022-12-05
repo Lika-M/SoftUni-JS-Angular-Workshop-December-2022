@@ -1,5 +1,6 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { IUser } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/user.service';
 
@@ -8,16 +9,13 @@ import { UserService } from 'src/app/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent{
+export class HeaderComponent {
 
-  get isLogged(): boolean {
-    return this.userService.isLogged;
-  }
-  get user():IUser | null{
-    return this.userService.currentUser;
-  }
-  constructor(private userService: UserService, private router:Router) { }
+  user$ = this.userService.currentUser$;
+  isLogged$ = this.userService.isLogged$;
 
-  
+  constructor(private userService: UserService, private router: Router) { }
+
+
 
 }
