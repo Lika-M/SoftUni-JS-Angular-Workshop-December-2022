@@ -16,7 +16,7 @@ const routes: Routes = [
       {
         path: 'create/theme',
         //TODO uncomment auth guard
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         component: CreateThemeComponent
       },
     ]

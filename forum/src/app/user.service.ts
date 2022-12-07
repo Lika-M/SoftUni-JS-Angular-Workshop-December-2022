@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { Injectable} from '@angular/core';
+import { BehaviorSubject, EMPTY, Observable, Subscription } from 'rxjs';
 import { CreateUserDto } from './interfaces/createUserDto';
 import { IUser } from './interfaces/user';
-import { tap, map, filter } from 'rxjs/operators';
+import { tap, map, filter, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,17 @@ export class UserService {
       .pipe(tap(user => {
         this._user$$.next(user);
       }));
+  }
+
+ // persistance of logged in user
+  authenticate(): Observable<IUser>{
+    return this.http.get<IUser>('/api/users/profile')
+    .pipe(tap(user => {
+      this._user$$.next(user);
+    }), catchError((err) => {
+      //EMPTY is e special type of Observable ending the stream immediately
+      return EMPTY;
+    }));
   }
 
   // updateProfile$(): Observable<IUser> {

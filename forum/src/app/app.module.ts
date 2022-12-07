@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { ThemeModule } from './theme/theme.module';
 import { MainComponent } from './main/main.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,14 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       provide: HTTP_INTERCEPTORS,
       multi: true,
       useClass: AuthInterceptor
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (userService: UserService) => {
+        return () => userService.authenticate();
+      },
+      deps: [UserService],
+      multi: true
     }
   ],
   bootstrap: [AppComponent],

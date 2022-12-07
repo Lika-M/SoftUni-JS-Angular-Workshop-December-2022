@@ -19,6 +19,7 @@ export class ThemeListComponent implements OnInit {
         this.themes = value;
       },
       error: (err) => console.error(err)
+      
     })
   }
 
